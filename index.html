@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Summenrechner mit PyScript</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+
+  <h2>Summenrechner</h2>
+
+  <label for="zahl1">Zahl 1:</label>
+  <input type="number" id="zahl1" />
+
+  <br><br>
+
+  <label for="zahl2">Zahl 2:</label>
+  <input type="number" id="zahl2" />
+
+  <br><br>
+
+  <button id="berechneButton">Summe berechnen</button>
+
+  <h3>Ergebnis:</h3>
+  <div id="ergebnis">–</div>
+
+  <py-script>
+from js import document
+
+def berechne_summe(evt=None):
+    try:
+        zahl1 = float(document.getElementById("zahl1").value)
+        zahl2 = float(document.getElementById("zahl2").value)
+        summe = zahl1 + zahl2
+        document.getElementById("ergebnis").innerText = f"Die Summe ist: {summe}"
+    except:
+        document.getElementById("ergebnis").innerText = "Bitte gültige Zahlen eingeben."
+
+# Event-Listener setzen
+document.getElementById("berechneButton").addEventListener("click", berechne_summe)
+  </py-script>
+
+</body>
+</html>
