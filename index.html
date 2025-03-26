@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <title>Summenrechner mit PyScript</title>
-
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
+
   <h1>Summenrechner</h1>
 
   <label for="zahl1">Zahl 1:</label>
@@ -25,8 +25,18 @@
   <h3>Ergebnis:</h3>
   <div id="ergebnis">–</div>
 
-  <!-- Python-Code extern eingebunden -->
-  <py-script src="https://raw.githubusercontent.com/GitItGod/PyScriptTest/refs/heads/main/main.py"></py-script>
+  <py-script>
+from pyscript import document
+
+def berechne_summe(event):
+    try:
+        zahl1 = float(document.querySelector("#zahl1").value)
+        zahl2 = float(document.querySelector("#zahl2").value)
+        summe = zahl1 + zahl2
+        document.querySelector("#ergebnis").innerText = f"Die Summe ist: {summe}"
+    except ValueError:
+        document.querySelector("#ergebnis").innerText = "Bitte geben Sie gültige Zahlen ein."
+  </py-script>
 
 </body>
 </html>
