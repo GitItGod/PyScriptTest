@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Summenrechner mit PyScript</title>
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
 
-  <h2>Summenrechner</h2>
+  <h1>Summenrechner</h1>
 
-  <label for="zahl1">Zahl 1:</label>
-  <input type="number" id="zahl1" />
-
-  <br><br>
-
-  <label for="zahl2">Zahl 2:</label>
-  <input type="number" id="zahl2" />
+  <label>Zahl 1: </label>
+  <input id="zahl1" type="number" />
 
   <br><br>
 
-  <button id="berechneButton">Summe berechnen</button>
+  <label>Zahl 2: </label>
+  <input id="zahl2" type="number" />
+
+  <br><br>
+
+  <button py-click="berechne_summe">Berechne Summe</button>
 
   <h3>Ergebnis:</h3>
   <div id="ergebnis">–</div>
 
-  <script>
-from js import document
+  <py-script>
+from pyscript import document
 
-def berechne_summe(evt=None):
+def berechne_summe(event):
     try:
-        zahl1 = float(document.getElementById("zahl1").value)
-        zahl2 = float(document.getElementById("zahl2").value)
-        summe = zahl1 + zahl2
-        document.getElementById("ergebnis").innerText = f"Die Summe ist: {summe}"
-    except:
-        document.getElementById("ergebnis").innerText = "Bitte gültige Zahlen eingeben."
-
-# Event-Listener setzen
-document.getElementById("berechneButton").addEventListener("click", berechne_summe)
-  </script>
+        zahl1 = float(document.querySelector("#zahl1").value)
+        zahl2 = float(document.querySelector("#zahl2").value)
+        ergebnis = zahl1 + zahl2
+        document.querySelector("#ergebnis").innerText = f"Die Summe ist: {ergebnis}"
+    except Exception as e:
+        document.querySelector("#ergebnis").innerText = "Ungültige Eingaben"
+  </py-script>
 
 </body>
 </html>
