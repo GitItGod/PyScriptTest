@@ -26,18 +26,7 @@
   <div id="ergebnis">–</div>
 
   <py-script>
-  from pyscript import document
-
-  document.querySelector("#ergebnis").innerText = "PyScript läuft!"
-    
-  def berechne_summe(event):
-      try:
-          zahl1 = float(document.querySelector("#zahl1").value)
-          zahl2 = float(document.querySelector("#zahl2").value)
-          summe = zahl1 + zahl2
-          document.querySelector("#ergebnis").innerText = f"Die Summe ist: {summe}"
-      except ValueError:
-          document.querySelector("#ergebnis").innerText = "Bitte geben Sie gültige Zahlen ein."
+    print("hello world)"
   </py-script>
 
 </body>
