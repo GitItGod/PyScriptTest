@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Summenrechner mit PyScript</title>
+
+  <!-- PyScript: CSS & JS korrekt eingebunden -->
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
@@ -10,21 +12,23 @@
 
   <h1>Summenrechner</h1>
 
-  <label>Zahl 1: </label>
+  <label>Zahl 1:</label>
   <input id="zahl1" type="number" />
 
   <br><br>
 
-  <label>Zahl 2: </label>
+  <label>Zahl 2:</label>
   <input id="zahl2" type="number" />
 
   <br><br>
 
-  <button py-click="berechne_summe">Berechne Summe</button>
+  <!-- Wichtig: py-click -->
+  <button py-click="berechne_summe">Summe berechnen</button>
 
   <h3>Ergebnis:</h3>
   <div id="ergebnis">–</div>
 
+  <!-- Korrektes PyScript-Tag -->
   <py-script>
 from pyscript import document
 
@@ -32,10 +36,10 @@ def berechne_summe(event):
     try:
         zahl1 = float(document.querySelector("#zahl1").value)
         zahl2 = float(document.querySelector("#zahl2").value)
-        ergebnis = zahl1 + zahl2
-        document.querySelector("#ergebnis").innerText = f"Die Summe ist: {ergebnis}"
-    except Exception as e:
-        document.querySelector("#ergebnis").innerText = "Ungültige Eingaben"
+        summe = zahl1 + zahl2
+        document.querySelector("#ergebnis").innerText = f"Die Summe ist: {summe}"
+    except:
+        document.querySelector("#ergebnis").innerText = "Ungültige Eingabe!"
   </py-script>
 
 </body>
