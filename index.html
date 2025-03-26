@@ -27,7 +27,9 @@
 
   <py-script>
   from pyscript import document
-  
+
+  document.querySelector("#ergebnis").innerText = "PyScript läuft!"
+    
   def berechne_summe(event):
       try:
           zahl1 = float(document.querySelector("#zahl1").value)
